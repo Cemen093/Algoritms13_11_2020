@@ -84,6 +84,7 @@ public class Tree {
     private void case4(Node n) {
         Node g = getGrandfather(n);
         Node p = n.parent;
+        Node bottomNode = n;
         if (n == n.parent.left && g.right == n.parent){
             Node tmp = n.right;
 
@@ -95,6 +96,7 @@ public class Tree {
 
             p.left = tmp;
             if (tmp != null){tmp.parent = p;}
+            bottomNode = p;
         }
         if (n == n.parent.right && g.left == n.parent){
 
@@ -108,8 +110,9 @@ public class Tree {
 
             p.right = tmp;
             if (tmp != null){tmp.parent = p;}
+            bottomNode = p;
         }
-        case5(p);
+        case5(bottomNode);
     }
 
     private void case5(Node n) {
